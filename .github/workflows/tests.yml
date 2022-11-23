@@ -19,6 +19,8 @@ jobs:
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@master
 
+      - run: sudo rm -rf /Library/Frameworks/Python.framework
+
       - name: Cache Homebrew Bundler RubyGems
         id: cache
         uses: actions/cache@v3

@@ -12,6 +12,8 @@ jobs:
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@master
 
+      - run: sudo rm -rf /Library/Frameworks/Python.framework
+
       - name: Set up git
         uses: Homebrew/actions/git-user-config@master
 
