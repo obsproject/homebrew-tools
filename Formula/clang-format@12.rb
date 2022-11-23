@@ -23,10 +23,9 @@ class ClangFormatAT12 < Formula
   end
 
   bottle do
-    root_url "https://github.com/PatTheMav/homebrew-custom/releases/download/clang-format@12-12.0.1"
-    rebuild 1
-    sha256 cellar: :any_skip_relocation, big_sur:      "c456fa917e4343da7392d3019d399ccbe49c0d2a3e48443846a29b9c4e1a9953"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "aa2d1157ab4026458f35dfb01e101f9872e8af6e2453d9c2230546e183b7affa"
+    root_url "https://github.com/obsproject/homebrew-tools/releases/download/clang-format@12-12.0.1"
+    sha256 cellar: :any_skip_relocation, monterey:     "7cf5bfcdbad1e59ba3b62d8c461c551b1e5bba15eb278e8b277e6f6035cf140d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "9ae598bf47150313f527c0eba82e77bf453b73a5503bb844574f30d613ad4713"
   end
 
   depends_on "cmake" => :build
