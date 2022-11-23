@@ -16,4 +16,4 @@ brew install https://raw.githubusercontent.com/obsproject/homebrew-tools/master/
 
 ## Contributing
 
-[![Latest Pull Request](https://github.com/obsproject/homebrew-tools/workflows/ci_pull/badge.svg)](https://github.com/obsproject/homebrew-tools/actions?query=workflow%3Aci_pull)
+[![Latest Pull Request](https://github.com/obsproject/homebrew-tools/workflows/brew%20pr-pull/badge.svg)](https://github.com/obsproject/homebrew-tools/actions?query=workflow%3Abrew%20pr-pull)
