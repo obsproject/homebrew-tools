@@ -9,8 +9,6 @@ jobs:
     if: contains(github.event.pull_request.labels.*.name, 'pr-pull')
     runs-on: ubuntu-22.04
     steps:
-      - run: find /usr/local/bin -lname '*/Library/Frameworks/Python.framework/*' -delete
-      
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@master
 
