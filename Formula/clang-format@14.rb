@@ -2,19 +2,10 @@ class ClangFormatAT14 < Formula
   desc "Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript"
   homepage "https://clang.llvm.org/docs/ClangFormat.html"
   # The LLVM Project is under the Apache License v2.0 with LLVM Exceptions
+  url "https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/llvm-14.0.6.src.tar.xz"
+  sha256 "050922ecaaca5781fdf6631ea92bc715183f202f9d2f15147226f023414f619a"
   license "Apache-2.0"
   version_scheme 1
-  head "https://github.com/llvm/llvm-project.git", branch: "main"
-
-  stable do
-    url "https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/llvm-14.0.6.src.tar.xz"
-    sha256 "050922ecaaca5781fdf6631ea92bc715183f202f9d2f15147226f023414f619a"
-
-    resource "clang" do
-      url "https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/clang-14.0.6.src.tar.xz"
-      sha256 "2b5847b6a63118b9efe5c85548363c81ffe096b66c3b3675e953e26342ae4031"
-    end
-  end
 
   livecheck do
     url :stable
@@ -29,7 +20,9 @@ class ClangFormatAT14 < Formula
   end
 
   depends_on "cmake" => :build
+  depends_on "ninja" => :build
 
+  uses_from_macos "libxml2"
   uses_from_macos "ncurses"
   uses_from_macos "zlib"
 
@@ -37,22 +30,20 @@ class ClangFormatAT14 < Formula
     keg_only "it conflicts with llvm"
   end
 
+  resource "clang" do
+    url "https://github.com/llvm/llvm-project/releases/download/llvmorg-14.0.6/clang-14.0.6.src.tar.xz"
+    sha256 "2b5847b6a63118b9efe5c85548363c81ffe096b66c3b3675e953e26342ae4031"
+  end
+
   def install
-    llvmpath = if build.head?
-      ln_s buildpath/"clang", buildpath/"llvm/tools/clang"
-
-      buildpath/"llvm"
-    else
-      resource("clang").stage do |r|
-        (buildpath/"llvm-#{version}.src/tools/clang").install Pathname("clang-#{r.version}.src").children
-      end
-
-      buildpath/"llvm-#{version}.src"
+    resource("clang").stage do |r|
+      (buildpath/"llvm-#{version}.src/tools/clang").install Pathname("clang-#{r.version}.src").children
     end
 
-    system "cmake", "-S", llvmpath, "-B", "build",
+    llvmpath = buildpath/"llvm-#{version}.src"
+
+    system "cmake", "-G", "Ninja", "-S", llvmpath, "-B", "build",
                     "-DLLVM_EXTERNAL_PROJECTS=clang",
-                    "-DLLVM_ENABLE_LIBXML2=OFF",
                     "-DLLVM_INCLUDE_BENCHMARKS=OFF",
                     "-DLLVM_INCLUDE_TESTS=OFF",
                     *std_cmake_args
@@ -64,7 +55,6 @@ class ClangFormatAT14 < Formula
     inreplace git_clang_format, /clang-format/, "clang-format-14"
     bin.install "build/bin/clang-format" => "clang-format-14"
     bin.install git_clang_format => "git-clang-format-14"
-    (share/"clang").install llvmpath.glob("tools/clang/tools/clang-format/clang-format*")
   end
 
   test do
