@@ -15,8 +15,9 @@ class ClangFormatAT14 < Formula
 
   bottle do
     root_url "https://github.com/obsproject/homebrew-tools/releases/download/clang-format@14-14.0.6"
-    sha256 cellar: :any_skip_relocation, monterey:     "6d6e3094134d6645285a8ed795c2372cbdc9b60d062a672b2c7e9fedadcb33b4"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "97073b1a88f7a78ef5c7ea876fa749eed17ddd9bfb6276981bf9437ae6201612"
+    rebuild 1
+    sha256 cellar: :any_skip_relocation, monterey:     "2f7f29ba30ab9c29408ed2a2cafd41ea9efe4fccaf8c9fff73787808ae801c65"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "78adc035042ad29c9b9f58975f255ee87ea5b4381e18b3e708f0f997b46adba2"
   end
 
   depends_on "cmake" => :build
