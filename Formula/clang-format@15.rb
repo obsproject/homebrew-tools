@@ -13,6 +13,12 @@ class ClangFormatAT15 < Formula
     regex(%r{href=.*?/tag/llvmorg[._-]v?(\d+(?:\.\d+)+)}i)
   end
 
+  bottle do
+    root_url "https://github.com/obsproject/homebrew-tools/releases/download/clang-format@15-15.0.6"
+    sha256 cellar: :any_skip_relocation, monterey:     "8b866776bade68cfe70083064eac4707d806083d553314afb7f16112a8a5fcf6"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "0c8aa2d91a1700dbdc4b0f8f4b96c41b14b18380e726e4141bda098df947dc82"
+  end
+
   depends_on "cmake" => :build
   depends_on "ninja" => :build
 
