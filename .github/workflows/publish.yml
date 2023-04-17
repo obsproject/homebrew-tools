@@ -3,7 +3,6 @@ on:
   pull_request_target:
     types:
       - labeled
-
 jobs:
   pr-pull:
     if: contains(github.event.pull_request.labels.*.name, 'pr-pull')
@@ -11,12 +10,8 @@ jobs:
     steps:
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@master
-
-      - run: sudo rm -rf /Library/Frameworks/Python.framework
-
       - name: Set up git
         uses: Homebrew/actions/git-user-config@master
-
       - name: Pull bottles
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
