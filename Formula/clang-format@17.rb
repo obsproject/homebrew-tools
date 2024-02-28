@@ -14,6 +14,12 @@ class ClangFormatAT17 < Formula
     strategy :github_latest
   end
 
+  bottle do
+    root_url "https://github.com/obsproject/homebrew-tools/releases/download/clang-format@17-17.0.3"
+    sha256 cellar: :any_skip_relocation, ventura:      "afc4f7003d0c4e98be6bdbfa70a644b30e250ff764e560d2055b545afefdce8f"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "daaf7942d750c0133e703573cc137b72c5dce303d1db84e2e978a2c92d3bad80"
+  end
+
   depends_on "cmake" => :build
   depends_on "ninja" => :build
 
