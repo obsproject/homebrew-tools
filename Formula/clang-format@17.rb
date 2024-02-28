@@ -5,6 +5,7 @@ class ClangFormatAT17 < Formula
   url "https://github.com/llvm/llvm-project/releases/download/llvmorg-17.0.3/llvm-17.0.3.src.tar.xz"
   sha256 "18fa6b5f172ddf5af9b3aedfdb58ba070fd07fc45e7e589c46c350b3cc066bc1"
   license "Apache-2.0"
+  revision 1
   version_scheme 1
   head "https://github.com/llvm/llvm-project.git", branch: "main"
 
