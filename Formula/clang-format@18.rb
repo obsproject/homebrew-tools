@@ -5,6 +5,7 @@ class ClangFormatAT18 < Formula
   url "https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.8/llvm-18.1.8.src.tar.xz"
   sha256 "f68cf90f369bc7d0158ba70d860b0cb34dbc163d6ff0ebc6cfa5e515b9b2e28d"
   license "Apache-2.0"
+  revision 1
   version_scheme 1
   head "https://github.com/llvm/llvm-project.git", branch: "main"
 
@@ -78,7 +79,6 @@ class ClangFormatAT18 < Formula
 
     bin.install "build/bin/clang-format" => "clang-format-18"
     bin.install git_clang_format => "git-clang-format-18"
-    (share/"clang").install llvmpath.glob("tools/clang/tools/clang-format/clang-format*")
   end
 
   test do
