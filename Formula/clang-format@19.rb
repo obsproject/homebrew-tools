@@ -16,10 +16,10 @@ class ClangFormatAT19 < Formula
   end
 
   bottle do
-    root_url "https://github.com/obsproject/homebrew-tools/releases/download/clang-format@19-19.1.1"
-    sha256 cellar: :any_skip_relocation, arm64_sonoma: "b01ec303053e53d181a47c54143995e6daa5109d392a9bff7fd8f9b4471291ef"
-    sha256 cellar: :any_skip_relocation, ventura:      "e1bb7cec0e1c4b9e8bf429d2a1aa1a1b534030f60f1201798db46775d99ff4a9"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "88f419613cec12f8928c8314c88cdf9d919ce00d717524fb4631015f4bae96aa"
+    root_url "https://github.com/obsproject/homebrew-tools/releases/download/clang-format@19-19.1.1_1"
+    sha256 cellar: :any_skip_relocation, arm64_sonoma: "45f6818808700d9f4f9ccbb25907f702adf328327c808222d97402d3be4609fd"
+    sha256 cellar: :any_skip_relocation, ventura:      "d3333f82da6f4e74c37f843e727dfa9f49915cf5be5133ad94e9fdf24555d2f3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "c9a962e8eb61d4bbc66b9e2649a6fdd153f00cf2c223f6d2935f2f9cc05fc356"
   end
 
   depends_on "cmake" => :build
