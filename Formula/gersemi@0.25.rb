@@ -8,12 +8,10 @@ class GersemiAT025 < Formula
   license "MPL-2.0"
 
   bottle do
-    sha256 cellar: :any,                 arm64_tahoe:   "2b6199c81299795a53fb0f5aa2deedb3ae4f49743b068bcd598178cb36498d8f"
-    sha256 cellar: :any,                 arm64_sequoia: "50c922c505301510a2c1a6c724837056587b6ec435f734cae800094ee0d5eee1"
-    sha256 cellar: :any,                 arm64_sonoma:  "49dcacecd387d761a8a5c70de7181c8264bd8c7cf4f971c6e718c99edbff2995"
-    sha256 cellar: :any,                 sonoma:        "25ec2921b6b9c19935ef4c2cc4bf18ef5d5d8d2f39449c2d5e977e19e68c6c93"
-    sha256 cellar: :any_skip_relocation, arm64_linux:   "8669ccc91362efe8ea252cddd8b8c403731f3075adf02664577afb48daefcb05"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "9685c1fd0991cd175d0a7b4b76188e3f3c2ddee0049143d44a160750c982341c"
+    root_url "https://github.com/obsproject/homebrew-tools/releases/download/gersemi@0.25-0.25.0"
+    sha256 cellar: :any,                 arm64_sequoia: "81d48197a39e6c8ddfe07e4413ebccc1781616d724bf34bc64fcea685a27eed7"
+    sha256 cellar: :any,                 arm64_sonoma:  "a93d3c9c887e9e57390842201fee57897c28bf8e67b27c921967d9a3a3774f7d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b6fd1dca437f6cc9623c74e65e683d19d084480bb0d7f552e2c9f87e7735e672"
   end
 
   keg_only :versioned_formula
