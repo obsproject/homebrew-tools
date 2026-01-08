@@ -6,6 +6,7 @@ class GersemiAT025 < Formula
   url "https://files.pythonhosted.org/packages/ac/03/0b438c6b708e0c3f22f71d87dd46bc054ab720f5d8bbeac520d8468e93c2/gersemi-0.25.0.tar.gz"
   sha256 "5b19c70f5e9e575127ca019ecc13d1c61ca59cbddbebd0688ce08864c0d7f67b"
   license "MPL-2.0"
+  revision 1
 
   bottle do
     root_url "https://github.com/obsproject/homebrew-tools/releases/download/gersemi@0.25-0.25.0"
@@ -13,8 +14,6 @@ class GersemiAT025 < Formula
     sha256 cellar: :any,                 arm64_sonoma:  "a93d3c9c887e9e57390842201fee57897c28bf8e67b27c921967d9a3a3774f7d"
     sha256 cellar: :any_skip_relocation, x86_64_linux:  "b6fd1dca437f6cc9623c74e65e683d19d084480bb0d7f552e2c9f87e7735e672"
   end
-
-  keg_only :versioned_formula
 
   depends_on "rust" => :build
   depends_on "libyaml"
@@ -41,11 +40,15 @@ class GersemiAT025 < Formula
   end
 
   def install
-    virtualenv_install_with_resources
+    venv = virtualenv_create(libexec, "python3.14")
+    venv.pip_install resources
+    venv.pip_install buildpath
+
+    bin.install venv.root/"bin/gersemi" => "gersemi-0.25"
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/gersemi --version")
+    assert_match version.to_s, shell_output("#{bin}/gersemi-0.25 --version")
 
     (testpath/"CMakeLists.txt").write <<~CMAKE
       cmake_minimum_required(VERSION 3.10)
@@ -56,9 +59,9 @@ class GersemiAT025 < Formula
 
     # Return 0 when there's nothing to reformat.
     # Return 1 when some files would be reformatted.
-    system bin/"gersemi", "--check", testpath/"CMakeLists.txt"
+    system bin/"gersemi-0.25", "--check", testpath/"CMakeLists.txt"
 
-    system bin/"gersemi", testpath/"CMakeLists.txt"
+    system bin/"gersemi-0.25", testpath/"CMakeLists.txt"
 
     expected_content = <<~CMAKE
       cmake_minimum_required(VERSION 3.10)
