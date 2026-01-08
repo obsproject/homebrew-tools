@@ -9,10 +9,10 @@ class GersemiAT025 < Formula
   revision 1
 
   bottle do
-    root_url "https://github.com/obsproject/homebrew-tools/releases/download/gersemi@0.25-0.25.0"
-    sha256 cellar: :any,                 arm64_sequoia: "81d48197a39e6c8ddfe07e4413ebccc1781616d724bf34bc64fcea685a27eed7"
-    sha256 cellar: :any,                 arm64_sonoma:  "a93d3c9c887e9e57390842201fee57897c28bf8e67b27c921967d9a3a3774f7d"
-    sha256 cellar: :any_skip_relocation, x86_64_linux:  "b6fd1dca437f6cc9623c74e65e683d19d084480bb0d7f552e2c9f87e7735e672"
+    root_url "https://github.com/obsproject/homebrew-tools/releases/download/gersemi@0.25-0.25.0_1"
+    sha256 cellar: :any,                 arm64_sequoia: "cc2ce8757ea6cbe3e7c1404fe6a8af199290b8d60fe28dd213b22bb4d74ccedb"
+    sha256 cellar: :any,                 arm64_sonoma:  "699a81b0672c441ac50011638ce263fc92693260ca3761dcc4eb25ddeb1fa9f3"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:  "6d499714fb7216f98c0bbd03a5050687b45218d973be84e42a8fded9a816f666"
   end
 
   depends_on "rust" => :build
