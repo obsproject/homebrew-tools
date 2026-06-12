@@ -20,7 +20,7 @@ jobs:
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@main
         with:
-          token: ${{ secrets.HOMEBREW_API_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Cache Homebrew Bundler RubyGems
         uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae
