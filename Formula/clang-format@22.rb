@@ -14,6 +14,13 @@ class ClangFormatAT22 < Formula
     strategy :github_latest
   end
 
+  bottle do
+    root_url "https://github.com/obsproject/homebrew-tools/releases/download/clang-format@22-22.1.3"
+    sha256 cellar: :any_skip_relocation, arm64_tahoe:   "bc9e58d81979c87b283696c1e53f4c34d96086f43a9c8c6e77723f6da5acb6cb"
+    sha256 cellar: :any_skip_relocation, arm64_sequoia: "88da3851bc6a02a1f0738f1bc7d44a4f6c4b4656f9c56b3bb6106b43c5a533ec"
+    sha256 cellar: :any,                 x86_64_linux:  "cbf3027ea9d20db4ceeb811ea001e757adf8757533171a9d696d5c2eb812c088"
+  end
+
   depends_on "cmake" => :build
 
   uses_from_macos "python"
