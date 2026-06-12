@@ -8,29 +8,26 @@ jobs:
   test-bot:
     strategy:
       matrix:
-        os: [ubuntu-22.04, ubuntu-24.04, macos-14, macos-15]
+        os: [ubuntu-24.04, macos-15, macos-26]
     runs-on: ${{ matrix.os }}
     permissions:
       actions: read
       checks: read
       contents: read
       pull-requests: read
-    env:
-      HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_API_TOKEN }}
     steps:
       - name: Set up Homebrew
         id: set-up-homebrew
         uses: Homebrew/actions/setup-homebrew@main
         with:
-          token: ${{ github.token }}
+          token: ${{ secrets.HOMEBREW_API_TOKEN }}
 
       - name: Cache Homebrew Bundler RubyGems
-        id: cache
-        uses: actions/cache@v4
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae
         with:
           path: ${{ steps.set-up-homebrew.outputs.gems-path }}
-          key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
-          restore-keys: ${{ runner.os }}-rubygems-
+          key: ${{ matrix.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
+          restore-keys: ${{ matrix.os }}-rubygems-
 
       - run: brew test-bot --only-cleanup-before
 
@@ -43,7 +40,7 @@ jobs:
 
       - name: Upload bottles as artifact
         if: always() && github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
         with:
           name: bottles_${{ matrix.os }}
           path: '*.bottle.*'
